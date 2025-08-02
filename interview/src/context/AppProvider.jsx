@@ -2,7 +2,7 @@ import React from "react";
 import { AppContext } from "./AppContext";
 
 export const AppProvider = ({ children }) => {
-  const backendURL = "http://localhost:5000/api"; // Change for production
+  const backendURL =import.meta.env.VITE_API; 
 
   return (
     <AppContext.Provider value={{ backendURL }}>

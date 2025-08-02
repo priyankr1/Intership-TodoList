@@ -138,7 +138,7 @@ const ChatBot = () => {
 
     try {
       const response = await axios.post(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-8b:generateContent?key=${process.env.REACT_APP_AI_URL}`,
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-8b:generateContent?key=${import.meta.env.VITE_AI_URL}`,
         {
           contents: [{ parts: [{ text: `${SYSTEM_PROMPT}\nUser: ${query}` }] }],
         }
