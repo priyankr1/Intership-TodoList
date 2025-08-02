@@ -11,7 +11,9 @@ connectDB();
 const app = express();
 app.use(cors());
 app.use(express.json());
-
+app.get("/", (req, res) => {
+  res.send("Working");
+});
 app.use("/api/todos", todoRoutes);
 app.use("/api/feedbacks", feedbackRoutes);
 
