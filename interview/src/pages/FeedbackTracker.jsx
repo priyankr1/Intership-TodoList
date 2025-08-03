@@ -13,7 +13,7 @@ export default function FeedbackTracker() {
 
   // Fetch feedbacks
   useEffect(() => {
-    axios.get(`${backendURL}/feedbacks`)
+    axios.get(`${backendURL}/api/feedbacks`)
       .then(res => setFeedbacks(res.data))
       .catch(() => toast.error("Failed to load feedbacks"));
   }, [backendURL]);

@@ -14,7 +14,7 @@ export default function Home() {
   useEffect(() => {
     const fetchCounts = async () => {
       try {
-        const todosRes = await axios.get(`${backendURL}/todos`);
+        const todosRes = await axios.get(`${backendURL}/api/todos`);
         const feedbackRes = await axios.get(`${backendURL}/feedbacks`);
         setTodoCount(todosRes.data.length || 0);
         setFeedbackCount(feedbackRes.data.length || 0);

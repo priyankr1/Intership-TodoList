@@ -22,7 +22,7 @@ export default function TodoManager() {
   const addTodo = async () => {
     if (!input.trim()) return;
     try {
-      const res = await axios.post(`${backendURL}/todos`, { text: input });
+      const res = await axios.post(`${backendURL}/api/todos`, { text: input });
       setTodos([res.data, ...todos]);
       setInput("");
       toast.success("Task added!");
