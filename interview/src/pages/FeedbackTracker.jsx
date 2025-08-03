@@ -22,7 +22,7 @@ export default function FeedbackTracker() {
   const addFeedback = async () => {
     if (!input.trim()) return;
     try {
-      const res = await axios.post(`${backendURL}/feedbacks`, { text: input });
+      const res = await axios.post(`${backendURL}/api/feedbacks`, { text: input });
       setFeedbacks([res.data, ...feedbacks]);
       setInput("");
       toast.success("Feedback added!");
@@ -40,7 +40,7 @@ export default function FeedbackTracker() {
   // Save edit
   const saveEdit = async (id) => {
     try {
-      const updated = await axios.put(`${backendURL}/feedbacks/${id}`, { text: editValue });
+      const updated = await axios.put(`${backendURL}/api/feedbacks/${id}`, { text: editValue });
       setFeedbacks(feedbacks.map(f => (f._id === id ? updated.data : f)));
       setEditingId(null);
       toast.success("Feedback updated!");
@@ -53,7 +53,7 @@ export default function FeedbackTracker() {
   const deleteFeedback = async (id) => {
     if (!window.confirm("Are you sure you want to delete this feedback?")) return;
     try {
-      await axios.delete(`${backendURL}/feedbacks/${id}`);
+      await axios.delete(`${backendURL}/api/feedbacks/${id}`);
       setFeedbacks(feedbacks.filter(f => f._id !== id));
       toast.success("Feedback deleted!");
     } catch {

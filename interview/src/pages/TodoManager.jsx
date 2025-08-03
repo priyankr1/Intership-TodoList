@@ -13,7 +13,7 @@ export default function TodoManager() {
 
   // Fetch todos
   useEffect(() => {
-    axios.get(`${backendURL}/todos`)
+    axios.get(`${backendURL}/api/todos`)
       .then(res => setTodos(res.data))
       .catch(() => toast.error("Failed to load todos"));
   }, [backendURL]);
@@ -36,7 +36,7 @@ export default function TodoManager() {
     try {
       const todo = todos.find(t => t._id === id);
       const updated = { ...todo, completed: !todo.completed };
-      await axios.put(`${backendURL}/todos/${id}`, updated);
+      await axios.put(`${backendURL}/api/todos/${id}`, updated);
       setTodos(todos.map(t => (t._id === id ? updated : t)));
     } catch {
       toast.error("Error updating task");
@@ -52,7 +52,7 @@ export default function TodoManager() {
   // Save edit
   const saveEdit = async (id) => {
     try {
-      const updated = await axios.put(`${backendURL}/todos/${id}`, { text: editValue });
+      const updated = await axios.put(`${backendURL}/api/todos/${id}`, { text: editValue });
       setTodos(todos.map(t => (t._id === id ? updated.data : t)));
       setEditingId(null);
       toast.success("Task updated!");
@@ -65,7 +65,7 @@ export default function TodoManager() {
   const deleteTodo = async (id) => {
     if (!window.confirm("Are you sure you want to delete this task?")) return;
     try {
-      await axios.delete(`${backendURL}/todos/${id}`);
+      await axios.delete(`${backendURL}/api/todos/${id}`);
       setTodos(todos.filter(t => t._id !== id));
       toast.success("Task deleted!");
     } catch {

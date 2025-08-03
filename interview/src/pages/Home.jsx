@@ -15,7 +15,7 @@ export default function Home() {
     const fetchCounts = async () => {
       try {
         const todosRes = await axios.get(`${backendURL}/api/todos`);
-        const feedbackRes = await axios.get(`${backendURL}/feedbacks`);
+        const feedbackRes = await axios.get(`${backendURL}/api/feedbacks`);
         setTodoCount(todosRes.data.length || 0);
         setFeedbackCount(feedbackRes.data.length || 0);
       } catch (error) {
