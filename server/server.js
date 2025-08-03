@@ -14,7 +14,9 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.send("Working");
 });
-app.use("/api/todos", todoRoutes);
+app.use("/api/todos", todoRoutes,(req,res)=>{
+  res.send("working")
+});
 app.use("/api/feedbacks", feedbackRoutes);
 
 const PORT = process.env.PORT || 5000;
